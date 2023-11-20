@@ -32,7 +32,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    # "apps.users.apps.UsersConfig",
+    "apps.users.apps.UsersConfig",
 ]
 
 INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + LOCAL_APPS
@@ -119,4 +119,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# AUTH_USER_MODEL = "users.CustomUser"
+AUTH_USER_MODEL = "users.CustomUser"
