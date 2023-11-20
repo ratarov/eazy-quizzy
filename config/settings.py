@@ -120,3 +120,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 AUTH_USER_MODEL = "users.CustomUser"
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", default="admin@admin.admin")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", default="Password-123")
