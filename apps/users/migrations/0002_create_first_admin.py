@@ -3,15 +3,13 @@
 from django.conf import settings
 from django.db import migrations
 
+from apps.users.models import CustomUser
+
 
 def create_first_superuser(apps, schema_editor):
-    CustomUser = apps.get_model("users", "CustomUser")
-    CustomUser.objects.create(
+    CustomUser.objects.create_superuser(
         email=settings.ADMIN_EMAIL,
         password=settings.ADMIN_PASSWORD,
-        is_staff=True,
-        is_superuser=True,
-        is_active=True,
     )
 
 
