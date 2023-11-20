@@ -10,16 +10,14 @@ python = "^3.11"
 Django = "^4.2.7"
 python-dotenv = "^1.0.0"
 psycopg2-binary = "^2.9.9"
-ruff = "^0.1.6"
-isort = "^5.12.0"
 pre-commit = "^3.5.0"
-black = "^23.11.0"
+gunicorn = "^21.2.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.11.0"
-ruff = "^0.1.6"
-isort = "^5.12.0"
 pre-commit = "^3.5.0"
+black = "^23.11.0"
+isort = "^5.12.0"
+ruff = "^0.1.6"
 
 [build-system]
 requires = ["poetry-core"]
