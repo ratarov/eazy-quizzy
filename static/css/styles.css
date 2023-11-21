@@ -1,0 +1,16 @@
+body {
+    position: relative;
+    font-size: 14px;
+}
+
+main {
+    margin-bottom: 100px;
+}
+
+.footer-bs {
+    position: absolute;
+    width: 100%;
+    min-height: 70px;
+    bottom: 0px;
+    left: 0;
+}

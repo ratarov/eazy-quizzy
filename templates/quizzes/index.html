@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Главная страница Eazy-Quizzy!{% endblock %}
+{% block content %}
+
+{% for quizz in object_list %}
+{{ quizz.title }}
+{% endfor %}
+
+{% endblock %}

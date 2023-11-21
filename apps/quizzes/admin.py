@@ -1,7 +1,7 @@
 import nested_admin
 from django.contrib import admin
 
-from apps.quizzes.models import (
+from .models import (
     Answer,
     Question,
     Quiz,
