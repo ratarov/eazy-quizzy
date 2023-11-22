@@ -30,7 +30,9 @@ class Quiz(BaseModel):
     """Модель Теста-Квиза."""
 
     title = models.CharField(verbose_name="Название теста", max_length=50)
-    theme = models.ManyToManyField(Theme, verbose_name="Темы квиза")
+    theme = models.ForeignKey(
+        Theme, on_delete=models.CASCADE, verbose_name="Темы квиза"
+    )
 
     class Meta:
         verbose_name = "Квиз"
@@ -44,16 +46,16 @@ class Quiz(BaseModel):
 class Question(BaseModel):
     """Модель Вопросов."""
 
-    class QuestionType(models.TextChoices):
+    class InputType(models.TextChoices):
         SINGLE = "s", "один верный ответ"
-        MULTI = "m", "несколько вреных ответов"
+        MULTI = "m", "несколько верных ответов"
 
     text = models.TextField(verbose_name="Текст вопроса", max_length=500)
-    q_type = models.CharField(
+    input_type = models.CharField(
         verbose_name="Кол-во верных ответов",
         max_length=1,
-        choices=QuestionType.choices,
-        default=QuestionType.SINGLE,
+        choices=InputType.choices,
+        default=InputType.SINGLE,
     )
     quiz = models.ForeignKey(
         Quiz, on_delete=models.CASCADE, verbose_name="Тест"
@@ -121,13 +123,13 @@ class QuestionResponse(BaseModel):
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, verbose_name="Вопрос"
     )
-    answer = models.ManyToManyField(Answer, verbose_name="Выбранные ответы")
+    answers = models.ManyToManyField(Answer, verbose_name="Выбранные ответы")
     is_correct = models.BooleanField(verbose_name="Ответ дан верно")
 
     class Meta:
-        verbose_name = "Прохождение теста"
-        verbose_name_plural = "Прохождения тестов"
+        verbose_name = "Отправленный ответ"
+        verbose_name_plural = "Отправленные ответы"
         default_related_name = "sent_answers"
 
     def __str__(self):
-        return f"{self.created}: Попытка {self.user} пройти {self.quiz}"
+        return f"{self.created}: ответ на {self.question}"

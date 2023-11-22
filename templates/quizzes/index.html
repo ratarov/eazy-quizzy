@@ -2,8 +2,15 @@
 {% block title %}Главная страница Eazy-Quizzy!{% endblock %}
 {% block content %}
 
-{% for quizz in object_list %}
-{{ quizz.title }}
+<h1>Список тестов-квизов на нашем сайте:</h1>
+<hr>
+{% for quiz in quizzes %}
+<b>Название: <a href="{% url 'quizzes:quiz_details' quiz.id %}">{{ quiz.title }}</a></b><br>
+Тема: {{ quiz.theme }}<br>
+Добавлен на сайт: {{ quiz.created }}<br>
+Вопросов: {{ quiz.questions_number }}<br>
+
+<hr>
 {% endfor %}
 
 {% endblock %}

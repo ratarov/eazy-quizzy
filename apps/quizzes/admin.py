@@ -42,5 +42,5 @@ class QuestionResponseAdmin(admin.TabularInline):
 @admin.register(QuizAttempt)
 class QuizAttemptAdmin(admin.ModelAdmin):
     inlines = [QuestionResponseAdmin]
-    list_display = ("id", "user", "quiz", "created", "is_completed")
+    list_display = ("id", "quiz", "created", "is_completed")
     empty_value_display = "-пусто-"

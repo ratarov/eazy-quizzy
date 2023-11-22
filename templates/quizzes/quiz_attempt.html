@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Главная страница Eazy-Quizzy!{% endblock %}
+{% block content %}
+{% load user_filters %}
+
+{% if attempt.is_completed %}
+
+Поздравляем! Вы завершили прохождение квиза "{{ attempt.quiz.title }}"<br><br>
+Ваш результат: <br>
+Верных ответов: {{ attempt.right }} / {{ attempt.total }}
+({{ attempt.right|as_percentage_of:attempt.total }})<br>
+<br>
+<a href="{% url 'quizzes:quiz_attempt' attempt.quiz.pk %}" class="btn btn-sm btn-danger">
+    Пройти еще раз
+</a>
+<a href="{% url 'quizzes:index' %}" class="btn btn-sm btn-danger">
+    К списку квизов
+</a>
+
+{% else %}
+
+Вопрос {{ number }} из {{ total }} : {{ question.text }}<br>
+<small>Формат ответа: {{ question.get_input_type_display }}</small><br>
+<br>
+<form method="post">
+    {% csrf_token %}
+    {{ form.answers }}
+    <br>
+    <button class="btn btn-sm btn-danger" type="submit">
+        {% if number == total %}Завершить{% else %}Следующий{% endif %}
+    </button>
+</form>
+
+{% endif %}
+{% endblock %}
