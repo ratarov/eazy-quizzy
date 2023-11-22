@@ -4,6 +4,7 @@ from .models import Quiz, QuizAttempt, Question, QuestionResponse
 from .selectors import (
     check_existing_attempt,
     create_new_attempt,
+    create_response,
     get_existing_attempt_with_data,
     get_first_unanswered_question,
 )
@@ -19,7 +20,7 @@ def get_attempt_data(user: CustomUser, quiz: Quiz) -> dict:
     else:
         attempt = create_new_attempt(user, quiz)
         number = 1
-        total = attempt.quiz.questions.count()
+        total = attempt.quiz.questions.filter(is_active=True).count()
 
     question = get_first_unanswered_question(attempt)
 
@@ -47,8 +48,6 @@ def create_quiz_response(
     correct_answers = list(question.answers.filter(is_correct=True))
     is_correct = answers == correct_answers
 
-    response = QuestionResponse.objects.create(
-        question=question, attempt=attempt, is_correct=is_correct
-    )
+    response = create_response(question, attempt, is_correct)
     response.answers.set(answers)
     return response

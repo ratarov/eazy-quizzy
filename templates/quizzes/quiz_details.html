@@ -6,7 +6,7 @@
 Квиз: {{ object.title }}<br>
 Тема: {{ object.theme.title }}<br>
 Добавлен: {{ object.created }}<br>
-Вопросов: {{ object.questions.count }}<br>
+Вопросов: {{ object.questions_number }}<br>
 <a href="{% url 'quizzes:quiz_attempt' object.pk %}" class="btn btn-sm btn-danger">
     Пройти
 </a>
