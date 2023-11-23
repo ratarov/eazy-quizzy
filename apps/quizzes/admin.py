@@ -20,11 +20,13 @@ class ThemeAdmin(admin.ModelAdmin):
 
 class AnswerAdmin(nested_admin.NestedTabularInline):
     model = Answer
+    extra = 1
 
 
 class QuestionAdmin(nested_admin.NestedTabularInline):
     inlines = [AnswerAdmin]
     model = Question
+    extra = 0
 
 
 @admin.register(Quiz)

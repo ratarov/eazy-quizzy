@@ -4,29 +4,34 @@
 {% load user_filters %}
 
 Квиз: {{ object.title }}<br>
-Тема: {{ object.theme.title }}<br>
+Тема: <a href="{% url 'quizzes:index' %}?theme={{ object.theme.id }}">{{ object.theme.title }}</a><br>
 Добавлен: {{ object.created }}<br>
-Вопросов: {{ object.questions_number }}<br>
+Вопросов: {{ object.questions_number }}<br><br>
 <a href="{% url 'quizzes:quiz_attempt' object.pk %}" class="btn btn-sm btn-danger">
     Пройти
 </a>
 <br>
 <br>
+{% if user.is_authenticated %}
+
+Всего попыток: {{ object.attempts_number }}<br>
 Попытки:<br>
 <hr>
 {% for attempt in object.attempts.all %}
 Начал: {{ attempt.created }}<br>
-Закончил: {{ attempt.updated }}<br>
 {% if attempt.is_completed %}
+Закончил: {{ attempt.updated }}<br>
 Статус: Пройден; <br>
 Верных ответов: {{ attempt.right }} / {{ attempt.total_answered }}
 ({{ attempt.right|as_percentage_of:attempt.total_answered }})<br>
 {% else %}
-Статус: Начат; Дано ответов: {{ attempt.total_answered }}<br>
+Статус: Начат;<br>
+Дано ответов: {{ attempt.total_answered }}<br>
 {% endif %}
 <hr>
 {% empty %}
 Вы еще не проходили тест<br>
 {% endfor %}
 
+{% endif %}
 {% endblock %}

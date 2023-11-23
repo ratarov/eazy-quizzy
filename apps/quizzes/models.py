@@ -50,7 +50,7 @@ class Question(BaseModel):
         SINGLE = "s", "один верный ответ"
         MULTI = "m", "несколько верных ответов"
 
-    text = models.TextField(verbose_name="Текст вопроса", max_length=500)
+    text = models.CharField(verbose_name="Текст вопроса", max_length=255)
     input_type = models.CharField(
         verbose_name="Кол-во верных ответов",
         max_length=1,
@@ -74,7 +74,7 @@ class Question(BaseModel):
 class Answer(BaseModel):
     """Модель Вариантов Ответов на вопросы."""
 
-    text = models.CharField(verbose_name="Ответ", max_length=50)
+    text = models.CharField(verbose_name="Ответ", max_length=150)
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, verbose_name="Вопрос"
     )

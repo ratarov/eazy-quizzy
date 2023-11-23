@@ -13,7 +13,7 @@ from django.views.generic import ListView, DetailView
 from .forms import QuestionResponseForm
 from .models import Quiz
 from .selectors import (
-    get_quizzes_with_user_data,
+    get_all_quizzes,
     get_existing_attempt,
     get_first_unanswered_question,
 )
@@ -25,10 +25,11 @@ class QuizListView(ListView):
 
     model = Quiz
     template_name = "quizzes/index.html"
-    context_object_name = "quizzes"
+    paginate_by = 5
 
     def get_queryset(self) -> QuerySet[Any]:
-        return get_quizzes_with_user_data(user=self.request.user)
+        theme_id = self.request.GET.get("theme")
+        return get_all_quizzes(user=self.request.user, theme_id=theme_id)
 
 
 class QuizDetailView(DetailView):
@@ -38,7 +39,7 @@ class QuizDetailView(DetailView):
     template_name = "quizzes/quiz_details.html"
 
     def get_queryset(self) -> QuerySet[Any]:
-        return get_quizzes_with_user_data(user=self.request.user)
+        return get_all_quizzes(user=self.request.user)
 
 
 class QuizAttemptView(LoginRequiredMixin, View):
