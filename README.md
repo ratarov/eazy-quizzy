@@ -10,7 +10,7 @@
 ![image](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![image](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![image](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
-![image](https://img.shields.io/badge/Poetry-100000?logoColor=white)
+![image](https://img.shields.io/badge/Poetry-100000?style=for-the-badge&logoColor=white)
 
 ### Доступные возможности
 - Регистрация / аутентификация пользователей
@@ -57,8 +57,8 @@ docker-compose up -d --build
 Сайт доступен по адресу http://127.0.0.1:8000/, добавлен суперпользователь с данными из .env
 
 ### Как выглядит фронт
-![image](https://github.com/ratarov/eazy-quizzy/tree/main/static/screenshots/1.png)<br>
-![image](https://github.com/ratarov/eazy-quizzy/tree/main/static/screenshots/2.png)<br>
-![image](https://github.com/ratarov/eazy-quizzy/tree/main/static/screenshots/3.png)<br>
-![image](https://github.com/ratarov/eazy-quizzy/tree/main/static/screenshots/4.png)<br>
-![image](https://github.com/ratarov/eazy-quizzy/tree/main/static/screenshots/5.png)<br>
+![image](https://github.com/ratarov/eazy-quizzy/blob/main/static/screenshots/1.png) <br>
+![image](https://github.com/ratarov/eazy-quizzy/blob/main/static/screenshots/2.png) <br>
+![image](https://github.com/ratarov/eazy-quizzy/blob/main/static/screenshots/3.png) <br>
+![image](https://github.com/ratarov/eazy-quizzy/blob/main/static/screenshots/4.png) <br>
+![image](https://github.com/ratarov/eazy-quizzy/blob/main/static/screenshots/5.png) <br>
