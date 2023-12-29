@@ -1,5 +1,5 @@
 from django import forms
-from .models import QuestionResponse, Answer, Question
+from .models import QuestionResponse, Answer, Question, Quiz
 
 
 class QuestionResponseForm(forms.ModelForm):
@@ -19,3 +19,9 @@ class QuestionResponseForm(forms.ModelForm):
                 queryset=Answer.objects.filter(question=q),
                 widget=forms.CheckboxSelectMultiple(),
             )
+
+
+class QuizForm(forms.Form):
+    class Meta:
+        model = Quiz
+        fields = "__all__"

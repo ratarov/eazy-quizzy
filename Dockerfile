@@ -9,6 +9,8 @@ RUN pip3 install poetry && curl -sSL 'https://install.python-poetry.org' | pytho
 ENV PYTHONPATH="$PYTHONPATH:/app"
 
 RUN poetry config virtualenvs.create false \
-  && poetry install $(test "$YOUR_ENV" == production && echo "--without dev") --no-interaction --no-ansi
+  && poetry install --without dev --no-interaction --no-ansi
 
 COPY . .
+
+ENTRYPOINT ["sh", "entrypoint.sh"]

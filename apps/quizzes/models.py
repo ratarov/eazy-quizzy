@@ -1,5 +1,4 @@
 from django.db import models
-
 from apps.users.models import CustomUser
 
 
@@ -106,7 +105,6 @@ class QuizAttempt(BaseModel):
         verbose_name = "Прохождение теста"
         verbose_name_plural = "Прохождения тестов"
         default_related_name = "attempts"
-        constraints = []  # только 1 активное прохождение
 
     def __str__(self):
         return f"{self.created}: Попытка {self.user} пройти {self.quiz}"
